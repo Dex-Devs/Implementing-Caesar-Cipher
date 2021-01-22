@@ -8,7 +8,9 @@ import java.util.logging.Logger;
 
 public class CaesarCipher {
     
+    // encrypting using a single key
     private String encrypt_decrypt(String encrypted, int key) {
+        
     // Make string builder with encrypted
     StringBuilder sb = new StringBuilder(encrypted);
   
@@ -21,7 +23,6 @@ public class CaesarCipher {
  
     
     // Count from 0 to sb length - 1
-    System.out.println("Shifted Alphabet: " + shifted);
     for(int k=0 ; k < sb.length() ; k++){
       // find index of current char in the origianl alphabet
       int idx;
@@ -49,7 +50,9 @@ public class CaesarCipher {
 
   }
     
+    // encrypt every character using key1 then every other character will be encrypted using key2
     private String encrypt_decrypt(String encrypted, int key1, int key2) {
+        
     // Make string builder with encrypted
     StringBuilder sb = new StringBuilder(encrypted);
   
@@ -60,9 +63,6 @@ public class CaesarCipher {
     // Computed shifted alphabet
     String shiftedAtKey1 = alphabet.substring(key1) + alphabet.substring(0,key1);
     String shiftedAtKey2 = alphabet.substring(key2) + alphabet.substring(0,key2);
-    
-    System.out.println("Shifted Alphabet 1: " + shiftedAtKey1);
-    System.out.println("Shifted Alphabet 2: " + shiftedAtKey2);
     
     // Count from 0 to sb length - 1
     for(int k=0 ; k < sb.length() ; k++){
@@ -101,7 +101,7 @@ public class CaesarCipher {
   } 
      
     String messageFromFile(String fileName) {
-      File file = new File("C:\\Users\\320\\Documents\\Dexter\\File Handling Test\\" + fileName); // your file directory
+      File file = new File("C:\\Users\\320\\Documents\\Dexter\\File Handling Test\\" + fileName); // your file directory concatenated with the file name
 
       StringBuilder message = new StringBuilder();
 
@@ -123,17 +123,23 @@ public class CaesarCipher {
     }
 
     void testCaesar(){
-      int key = 15;
+      int key1 = 23, key2 = 17, singleKey = 15;
 
-      String message = messageFromFile("testCase.txt"); // passed parameter should be the file name on your computer
+      String message = messageFromFile("testCase.txt"); // passed parameter must be the name of the file in your computer
 
       System.out.println(message);
-
-      String encrypted = encrypt_decrypt(message, 23, 17);
-      System.out.println(encrypted);
+      
+//      String encrypted = encrypt_decrypt(message, singleKey);
+//      System.out.println(encrypted);
+      
+      String encrypted = encrypt_decrypt(message, key1, key2);
+      System.out.println("Encrypted message: " + encrypted);
 
 //      String decrypt = encrypt_decrypt(encrypted, 26-key);
 //      System.out.println(decrypt);
+
+      String decrypt = encrypt_decrypt(encrypted, 26-key1, 26-key2);
+      System.out.println("Decrypted message: " + decrypt);
     }
     
     public static void main(String[] args) {
