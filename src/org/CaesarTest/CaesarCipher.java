@@ -9,9 +9,9 @@ import java.util.logging.Logger;
 public class CaesarCipher {
     
     // encryption using single key
-    private String encrypt_decrypt(String meessage, int key) {
+    private String encrypt_decrypt(String message, int key) {
     // Make string builder with encrypted
-    StringBuilder sb = new StringBuilder(meessage);
+    StringBuilder sb = new StringBuilder(message);
   
     // Write down alphabet
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -52,9 +52,9 @@ public class CaesarCipher {
     // encryption using 2 keys
     // key1 will encrypt every character while key2 will encrypt every other character
     
-    private String encrypt_decrypt(String meessage, int key1, int key2) {
+    private String encrypt_decrypt(String message, int key1, int key2) {
     // Make string builder with encrypted
-    StringBuilder sb = new StringBuilder(meessage);
+    StringBuilder sb = new StringBuilder(message);
   
     // Write down alphabet
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
