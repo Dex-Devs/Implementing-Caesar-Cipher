@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class CaesarCipher {
     
     // encryption using single key
-    private String encrypt_decrypt(String message, int key) {
+    public String encrypt_decrypt(String message, int key) {
     // Make string builder with encrypted
     StringBuilder sb = new StringBuilder(message);
   
@@ -46,13 +46,11 @@ public class CaesarCipher {
     }
 
     return sb.toString();
-
-  } 
+    } 
     
     // encryption using 2 keys
     // key1 will encrypt every character while key2 will encrypt every other character
-    
-    private String encrypt_decrypt(String message, int key1, int key2) {
+    public String encrypt_decrypt2Keys(String message, int key1, int key2) {
     // Make string builder with encrypted
     StringBuilder sb = new StringBuilder(message);
   
@@ -97,8 +95,7 @@ public class CaesarCipher {
     }
 
     return sb.toString();
-
-  } 
+    } 
     
     // read file from computer
     String messageFromFile(String fileName) {
@@ -127,26 +124,28 @@ public class CaesarCipher {
     void testCaesar(){
       int singleKey = 15, key1 = 23, key2 = 17;
 
-      String message = messageFromFile("testCase.txt"); // passed parameter should be the file name in your computer
+      String message = messageFromFile("smallText.txt"); // passed parameter should be the file name in your computer
 
       System.out.println("Message from file: " + message);
       System.out.println();
 
-//      String encrypted = encrypt_decrypt(message, singleKey);
-//      System.out.println("Encrypted message: " + encrypted);
+      String encrypted = encrypt_decrypt(message, singleKey);
+      System.out.println("Encrypted message: " + encrypted);
       
-      String encrypted = encrypt_decrypt(message, key1, key2);
-      System.out.println("Encrypted message (keys["+ key1 +","+ key2 +"]): " + encrypted);
-
-//      String decrypt = encrypt_decrypt(encrypted, 26-singleKey);
-//      System.out.println(decrypt);
+      String decrypt = encrypt_decrypt(encrypted, 26 - singleKey);
+      System.out.println("Decrypted message: " + decrypt);
       
-      String decrypt = encrypt_decrypt(encrypted, 26-key1, 26-key2);
-      System.out.println("Decrypted message (keys["+ (26-key1) +","+ (26-key2) +"]): " + decrypt);
+//      String encrypted = encrypt_decrypt2Keys(message, key1, key2);
+//      System.out.println("Encrypted message (keys["+ key1 +","+ key2 +"]): " + encrypted);
+      
+//      String decrypt = encrypt_decrypt2Keys(encrypted, 26-key1, 26-key2);
+//      System.out.println("Decrypted message (keys["+ (26-key1) +","+ (26-key2) +"]): " + decrypt);
     }
     
+    // MAIN METHOD HERE
     public static void main(String[] args) {
-      new CaesarCipher().testCaesar();
+//      new CaesarCipher().testCaesar();
+
 
     }
 }
