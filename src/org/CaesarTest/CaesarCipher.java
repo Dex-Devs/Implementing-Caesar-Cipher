@@ -122,29 +122,29 @@ public class CaesarCipher {
 
     // encrypt
     void testCaesar(){
-      int singleKey = 15, key1 = 23, key2 = 17;
+      int singleKey = 15, key1 = 2, key2 = 20;
 
       String message = messageFromFile("smallText.txt"); // passed parameter should be the file name in your computer
 
       System.out.println("Message from file: " + message);
       System.out.println();
 
-      String encrypted = encrypt_decrypt(message, singleKey);
-      System.out.println("Encrypted message: " + encrypted);
-      
-      String decrypt = encrypt_decrypt(encrypted, 26 - singleKey);
-      System.out.println("Decrypted message: " + decrypt);
+//      String encrypted = encrypt_decrypt(message, singleKey);
+//      System.out.println("Encrypted message: " + encrypted);
+//      
+//      String decrypt = encrypt_decrypt(encrypted, 26 - singleKey);
+//      System.out.println("Decrypted message: " + decrypt);
       
 //      String encrypted = encrypt_decrypt2Keys(message, key1, key2);
 //      System.out.println("Encrypted message (keys["+ key1 +","+ key2 +"]): " + encrypted);
       
-//      String decrypt = encrypt_decrypt2Keys(encrypted, 26-key1, 26-key2);
-//      System.out.println("Decrypted message (keys["+ (26-key1) +","+ (26-key2) +"]): " + decrypt);
+      String decrypt = encrypt_decrypt2Keys("Top ncmy qkff vi vguv vbg ycpx", 26-key1, 26-key2);
+      System.out.println("Decrypted message (keys["+ (26-key1) +","+ (26-key2) +"]): " + decrypt);
     }
     
     // MAIN METHOD HERE
     public static void main(String[] args) {
-//      new CaesarCipher().testCaesar();
+      new CaesarCipher().testCaesar();
 
 
     }

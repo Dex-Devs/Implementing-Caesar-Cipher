@@ -37,7 +37,7 @@ public class WordLengths {
     // initialize an array and a file resource then pass as parameters to method countWordLengths
     void textCountWordLengths(){
         
-        FileResource resource = new FileResource("C:\\Users\\320\\Documents\\Dexter\\File Handling Test\\smallText.txt");
+        FileResource resource = new FileResource("C:\\Users\\320\\Documents\\Dexter\\File Handling Test\\lotsOfWords.txt"); // your file location here
         int [] counts = new int[31];
         
         countWordLengths(resource, counts);

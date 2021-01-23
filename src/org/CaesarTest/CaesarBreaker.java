@@ -57,10 +57,11 @@ public class CaesarBreaker {
         
         int maxIndex = maxIndex(counts);
         if(maxIndex < 4)
-            return 4 - maxIndex;
+            return 26 - (4 - maxIndex);
         
         return maxIndex-4;
     }
+    
     
     // decrypt with 2 keys
     String decryptTwoKeys(String encrypted) {
@@ -72,10 +73,10 @@ public class CaesarBreaker {
         // get keys of two Strings
         int key1 = getKey(firstHalf);
         int key2 = getKey(secondHalf);
-        
+
         CaesarCipher cipher = new CaesarCipher();
         
-        System.out.println("Decryption keys [" + (26-key1) + ", " + (26-key2) + "]");
+        System.out.println("Decryption keys [" + (key1) + ", " + (key2) + "]");
         return cipher.encrypt_decrypt2Keys(encrypted, 26-key1, 26-key2);
     }
     
@@ -98,22 +99,34 @@ public class CaesarBreaker {
 //        
 //        System.out.println(new CaesarBreaker().halfOfString(message, start));
 
-        // TEST DECRYPT WITH 2 KEYS
-        
-        String message = "Just a test string with lots of eeeeeeeeeeeeeeeees";
-        int key1 = 4, key2 = 15;
-        
-        CaesarBreaker breaker = new CaesarBreaker();
+//            // TEST DECRYPT WITH 2 KEYS
+//        
+//        String message = "Just a test string with lots of eeeeeeeeeeeeeeeees";
+//        int key1 = 4, key2 = 15;
+//        
+//        CaesarBreaker breaker = new CaesarBreaker();
+//        CaesarCipher cipher = new CaesarCipher();
+//        
+//        // enrypting
+//        String encryptedMessage = cipher.encrypt_decrypt2Keys(message, key1, key2);
+//        System.out.println("Encryption keys [" + key1 + ", " + key2 + "]");
+//        System.out.println("Encrypted message: " + encryptedMessage);
+//        
+//        // decrypting
+//        String decryptedMessage = breaker.decryptTwoKeys(message);
+//        System.out.println("Decrypted message: " + decryptedMessage);
+    
+        // TEST DECRYPTION FROM TEXT FILE
         CaesarCipher cipher = new CaesarCipher();
+        CaesarBreaker breaker = new CaesarBreaker();
         
-        // enrypting
-        String encryptedMessage = cipher.encrypt_decrypt2Keys(message, key1, key2);
-        System.out.println("Encryption keys [" + key1 + ", " + key2 + "]");
-        System.out.println("Encrypted message: " + encryptedMessage);
+        String encrypted = cipher.messageFromFile("mysteryTwoKeys.txt");
+        System.out.println("Encrypted message: " + encrypted);
         
-        // decrypting
-        String decryptedMessage = breaker.decryptTwoKeys(encryptedMessage);
+        String decryptedMessage = breaker.decryptTwoKeys(encrypted);
         System.out.println("Decrypted message: " + decryptedMessage);
+        
+        
     }
         
         
